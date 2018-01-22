@@ -1,22 +1,31 @@
 {
-  "name": "wikistack",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vsmith214/wikistack.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vsmith214/wikistack/issues"
-  },
-  "homepage": "https://github.com/vsmith214/wikistack#readme",
-  "description": "",
-  "dependencies": {
-    "morgan": "^1.9.0"
-  }
+    "name": "wikistack",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon -e html,js,css ./wikistack/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vsmith214/wikistack.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/vsmith214/wikistack/issues"
+    },
+    "homepage": "https://github.com/vsmith214/wikistack#readme",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "morgan": "^1.9.0",
+        "nunjucks": "^3.0.1",
+        "pg": "^6.4.2",
+        "sequelize": "^4.32.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.14.11"
+    }
 }
