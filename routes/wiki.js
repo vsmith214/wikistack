@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     //if (err) next(err);
-    res.send('got to POST /wiki/');
+    res.json(req.body);
     res.end();
 });
 
