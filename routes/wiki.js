@@ -1,25 +1,34 @@
 let express = require('express');
 let router = express.Router();
-//let addPage = require('../views/addpage.html');
+let { Page, User } = require('../models');
 
 
-router.get('/', (req, res, next) => {
-    //if (err) next(err);
-    res.redirect('/');
-    res.end();
+
+router.get('/', (req, res) => {
+    res.render('wikipage');
+
 });
 
-router.post('/', (req, res, next) => {
-    //if (err) next(err);
-    res.json(req.body);
-    res.end();
+router.post('/', (req, res) => {
+    //let Page = Page.
+    var page = Page.build({
+        title: req.body.title,
+        content: req.body.content
+    });
+
+    page.save()
+        .then((thePage) => {
+            res.json(thePage);
+        });
+    //.catch(next);
 });
 
-router.get('/add', (req, res, next) => {
-    //if (err) next(err);
+router.get('/add', (req, res) => {
     res.render('addpage');
-    //res.end();
+
 });
+
+
 
 
 module.exports = router;

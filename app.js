@@ -8,12 +8,13 @@ let app = express();
 const path = require('path');
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // point nunjucks to the directory containing templates and turn off caching; configure returns an Environment 
 // instance, which we'll want to use to add Markdown support later. 
 var env = nunjucks.configure('views', { noCache: true });
 // have res.renderwork with html files 
 app.set('view engine', 'html'); // when res.render works with html files, have it use nunjucks to do so app.engine('html', nunjucks.render);
-//app.set("views", path.join(__dirname, "views"));
+
 
 app.engine('html', nunjucks.render);
 
@@ -22,11 +23,11 @@ app.engine('html', nunjucks.render);
 app.use(morgan('dev')); // what is dev????????????????????????
 app.use(makesRouter);
 
-app.get('/', (req, res, next) => res.send('Hello there'));
 
-User.sync({ force: false })
+
+User.sync() //If it doesnt exist create on and if it does make sure it matches the schema in this model
     .then(() => {
-        Page.sync({ force: false })
+        return Page.sync()
     })
     .then(() => {
         app.listen(3000, () => {
